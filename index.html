@@ -1,0 +1,86 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<input type="search" id="texto">
+<p></p>
+<canvas id="myCanvas"></canvas>
+<div id="objetos"></div>
+
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/item.js"></script>
+<script type="text/javascript">
+
+	// Usage:
+	var myCanvas = new canvas({
+		id: "myCanvas",
+		width: 600,
+	});
+	myCanvas.addElement({
+		element: "background", 
+		fillColor: 	"red"
+	});
+
+	myCanvas.addElement({
+		element: "circle",
+		x: 40,
+		y: 40,
+		radius: 80,
+	});
+
+	myCanvas.addElement({
+		element: "square",
+		x: 140,
+		y: 80,
+		width: 50,
+		height: 50,
+		lineWidth: 2,
+		fillColor: "red"
+	});
+
+	myCanvas.addElement({
+		element: "image",
+		x: 140,
+		y: 80,
+		width: 50,
+		height: 50,
+		url: "http://img1.wikia.nocookie.net/__cb20100130082645/gtawiki/images/9/9a/PlayStation_1_Logo.png"
+	});
+
+
+
+var divObjetos = document.getElementById("objetos");
+
+
+var interval = setInterval(function(){
+	myCanvas.render();
+	divObjetos.innerHTML = listarObjetos();
+}, 200);
+
+
+
+
+
+function listarObjetos(){
+	var objetos = myCanvas.getElements();
+	var html = '';
+	for( var i=0; i < objetos.length; i++ ){
+		html += '<div id="'+i+'">'+objetos[i].element+'</div>';
+	}
+	return html;
+}
+
+
+
+
+// EVENTOS DEL DOM
+
+
+
+	
+</script>
+</body>
+</html>
